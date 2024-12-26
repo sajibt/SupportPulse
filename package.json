@@ -1,0 +1,23 @@
+{
+    "name": "supportpulse",
+    "version": "1.0.0",
+    "description": "Real-time Company Support System",
+    "scripts": {
+        "client": "cd client && npm run dev",
+        "server": "cd server && npm run dev",
+        "dev": "concurrently \"npm run server\" \"npm run client\"",
+        "install-all": "npm install && cd client && npm install && cd ../server && npm install"
+    },
+    "keywords": [
+        "mern",
+        "support-system",
+        "real-time",
+        "chat"
+    ],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "concurrently": "^8.2.0"
+    },
+    "main": "index.js"
+}
