@@ -4,6 +4,12 @@ node_modules/
 /server/node_modules
 /.pnp
 .pnp.js
+tags
+
+# Ignore All config.env Files
+**/config.env
+
+
 
 # Testing
 /coverage
