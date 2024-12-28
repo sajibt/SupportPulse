@@ -5,8 +5,9 @@ import cookieParser from 'cookie-parser';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 
-import { errorHandler } from './utils/errorHandler.js';
+import { errorHandler } from './utils/responseHelper.js';
 import connectDB from './config/database.js';
+import { authenticate, authorize } from './middleware/authMiddleware.js'; // Import your middleware
 
 // Load environment variables based on NODE_ENV
 if (process.env.NODE_ENV === 'development') {
@@ -18,11 +19,11 @@ if (process.env.NODE_ENV === 'development') {
     process.exit(1);
 }
 
-
 // Routes
-import authRoutes from './routes/auth.js';
+import userRoutes from './routes/userRoutes.js';
 import messageRoutes from './routes/messages.js';
 import notificationRoutes from './routes/notifications.js';
+import adminRoutes from './routes/adminRoutes.js';
 
 const app = express();
 
@@ -54,9 +55,12 @@ app.get('/', (req, res) => {
 app.use('/api', limiter);
 
 // Routes
-app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/notifications', notificationRoutes);
+
+// Admin routes with authentication and authorization (e.g., only admin users can access)
+app.use('/api/admin', authenticate, authorize('admin'), adminRoutes);
 
 // Error handling
 app.use(errorHandler);

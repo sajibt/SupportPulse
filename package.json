@@ -4,7 +4,7 @@
     "description": "Real-time Company Support System",
     "scripts": {
         "client": "cd client && npm run dev",
-        "server": "cd server && npm run dev",
+        "server": "cd server && npm run start",
         "dev": "concurrently \"npm run server\" \"npm run client\"",
         "install-all": "npm install && cd client && npm install && cd ../server && npm install"
     },

@@ -1,6 +1,6 @@
 import Notification from '../models/Notification.js';
 
-import { appError, appSuccess } from '../utils/errorHandler.js';
+import { appError, appSuccess } from '../utils/responseHelper.js';
 
 export const createNotification = async (req, res) => {
     // Creates a new notification for the authenticated user

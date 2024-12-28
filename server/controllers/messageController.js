@@ -1,6 +1,6 @@
 import Message from '../models/Message.js';
 import { sendPushNotification } from '../services/pushNotificationService.js';
-import { appError, appSuccess } from '../utils/errorHandler.js';
+import { appError, appSuccess } from '../utils/responseHelper.js';
 
 export const sendMessage = async (req, res) => {
     try {
